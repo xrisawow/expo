@@ -1,0 +1,57 @@
+import React, { useState } from "react";
+import { View, Text, TextInput, Button, FlatList, TouchableOpacity, StyleSheet } from "react-native";
+
+const App = () => {
+  const [menuItems] = useState(["Ραντεβού", "Πελάτες", "Ταμείο", "Υπηρεσίες"]);
+
+  return (
+    <View style={styles.container}>
+      {/* Οθόνη Σύνδεσης */}
+      <Text style={styles.title}>Σύνδεση</Text>
+      <TextInput placeholder="Email" style={styles.input} />
+      <TextInput placeholder="Κωδικός" secureTextEntry style={styles.input} />
+      <Button title="Σύνδεση" onPress={() => {}} />
+      
+      {/* Κεντρικό Dashboard */}
+      <Text style={styles.dashboardTitle}>Dashboard</Text>
+      <FlatList 
+        data={menuItems}
+        renderItem={({ item }) => (
+          <TouchableOpacity style={styles.menuItem}>
+            <Text>{item}</Text>
+          </TouchableOpacity>
+        )}
+        keyExtractor={(item) => item}
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+  input: {
+    borderWidth: 1,
+    padding: 10,
+    marginBottom: 10,
+  },
+  dashboardTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginVertical: 20,
+  },
+  menuItem: {
+    padding: 15,
+    backgroundColor: "#ddd",
+    marginVertical: 5,
+  },
+});
+
+export default App;
